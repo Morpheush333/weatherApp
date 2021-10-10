@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Select</title>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link type="text/css" media="all" rel="stylesheet" th:href="@{/css/weather.css}"/>
+</head>
+<body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<div class="container">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/weatherApp/" class="brand-logo"> <i class="large material-icons">wb_sunny</i>Pogoda Dla
+                MialMial</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a th:href="@{/weatherApp/current-weather(city='pszczyna',country='pl',lang='pl')}">Pszczyna</a>
+                </li>
+                <li><a th:href="@{/weatherApp/current-weather(city='dublin',country='ie',lang='ie')}">Dublin</a></li>
+                <li><a th:href="@{/weatherApp/current-weather(city='Nice',country='fr',lang='fr')}">Nice</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <br/><br/><br/>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('select').formSelect();
+        });
+    </script>
+    <div class="browser-default input-field col s12">
+        <select>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+        </select>
+        <label>Materialize Select</label>
+    </div>
+
+    <form th:action="@{/current-weather}">
+        <input type="text" th:name="participant"/>
+        <select th:name="country">
+            <option value="de">Germany</option>
+            <option value="nl">Netherlands</option>
+            <option value="pl">Poland</option>
+            <option value="lv">Latvia</option>
+        </select>
+    </form>
+
+
+</div>
+</body>
+</html>
